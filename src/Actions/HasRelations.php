@@ -19,6 +19,7 @@ class HasRelations extends Action
             ->modalSubmitAction(false)
             ->icon('heroicon-o-information-circle')
             ->color('danger')
+            ->label(__('has-relations::translations.has-relations.has-relations'))
             ->modalDescription(new HtmlString(''))
             ->modalContentFooter(function () {
                 $this->generateTemplates();
@@ -51,7 +52,7 @@ class HasRelations extends Action
                 'relation' => $relation,
                 'label' => __('has-relations::translations.has-relations.there-are-x-records-in-x-relation', [
                     'count' => $count,
-                    'relation' => $relation,
+                    'relation' => __('has-relations::translations.has-relations.' . str($relation)->singular() . '.label'),
                 ]),
                 'columns' => $columns,
                 'tableRecords' => $this->getRecord()->{$relation}->toArray(),

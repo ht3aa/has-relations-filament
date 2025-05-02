@@ -12,6 +12,14 @@ class HasRelationsServiceProvider extends PackageServiceProvider
         $package
             ->name('has-relations')
             ->hasViews()
-            ->hasTranslations();
+            ->hasTranslations()
+            ->hasConfigFile();
+    }
+
+    public function packageRegistered()
+    {
+        $this->publishes([
+            __DIR__ . '/../resources/lang' => lang_path('vendor/has-relations'),
+        ], 'has-relations-translations');
     }
 }

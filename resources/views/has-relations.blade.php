@@ -1,12 +1,14 @@
-<div >
+<div>
         @foreach ($templates as $template)
             <div>
-                <h3 class="text-lg font-medium leading-6 text-gray-900" style="margin-bottom: .8rem; margin-top: 2rem;">{{ $template['label'] }}</h3>
+                <h3 class="text-lg font-medium leading-6 text-gray-900" style="margin-bottom: .8rem; margin-top: 2rem;">
+                    {{ $template['label'] }}
+                </h3>
                 <x-filament-tables::container  style="overflow: auto; max-height: 300px; ">
                     <x-filament-tables::table>
                         @foreach ($template['columns'] as $column)
                             <x-filament-tables::header-cell :wire:key="$template['relation'] . '-' . $column">
-                                {{ $column }}
+                                {{ __('has-relations::translations.has-relations.' . str($template['relation'])->singular() . '.' . $column) }}
                             </x-filament-tables::header-cell>
                         @endforeach
                     @foreach ($template['tableRecords'] as $record)
