@@ -61,7 +61,18 @@ public static function getEloquentQuery(): Builder
 
 ## Translation
 
-The package comes with English and Arabic translations. To add more languages, create a new translation file in `resources/lang/{language-code}/translations.php`.
+The package comes with English and Arabic translations. To publish and customize the translations, run:
+
+```bash
+php artisan vendor:publish --provider="Ht3aa\HasRelations\HasRelationsServiceProvider" --tag="has-relations-translations"
+```
+
+This will copy the translation files to:
+
+-   `lang/vendor/has-relations/en/translations.php`
+-   `lang/vendor/has-relations/ar/translations.php`
+
+You can then modify these files to customize the translations for your application.
 
 ## License
 
