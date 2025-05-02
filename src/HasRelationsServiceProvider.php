@@ -12,8 +12,7 @@ class HasRelationsServiceProvider extends PackageServiceProvider
         $package
             ->name('has-relations')
             ->hasViews()
-            ->hasTranslations()
-            ->hasConfigFile();
+            ->hasTranslations();
     }
 
     public function packageRegistered()
