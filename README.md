@@ -8,7 +8,7 @@ https://github.com/ht3aa/has-relations-filament/blob/main/demo.mp4
 
 ## Screenshot
 
-![Has Relations Action Screenshot](screenshot.png)
+<img src="demo.png" alt="Has Relations Action Screenshot" width="800">
 
 ## Installation
 
