@@ -1,0 +1,22 @@
+{
+    "name": "ht3aa/has-relations",
+    "description": "A Filament action to display related records",
+    "type": "library",
+    "require": {
+        "php": "^8.1",
+        "filament/filament": "^3.0",
+        "spatie/laravel-package-tools": "^1.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ht3aa\\HasRelations\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ht3aa\\HasRelations\\HasRelationsServiceProvider"
+            ]
+        }
+    }
+}
