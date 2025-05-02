@@ -6,6 +6,10 @@ A Filament action to display related records in a modal.
 
 https://github.com/ht3aa/has-relations-filament/blob/main/demo.mp4
 
+## Screenshot
+
+![Has Relations Action Screenshot](screenshot.png)
+
 ## Installation
 
 You can install the package via composer:
