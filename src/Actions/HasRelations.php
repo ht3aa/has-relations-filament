@@ -44,7 +44,7 @@ class HasRelations extends Action
 
     public function generateTemplates()
     {
-        foreach ($this->relations as $relation => $columns) {
+        foreach ($this->relations as $relation => $relationData) {
             $count = $this->getRecord()->{$relation}->count();
 
             $this->templates[] = [
@@ -54,8 +54,9 @@ class HasRelations extends Action
                     'count' => $count,
                     'relation' => __('has-relations::translations.has-relations.' . str($relation)->singular() . '.label'),
                 ]),
-                'columns' => $columns,
-                'tableRecords' => $this->getRecord()->{$relation}->toArray(),
+                'columns' => isset($relationData['columns']) ? $relationData['columns'] : [],
+                'tableRecords' => $this->getRecord()->{$relation},
+                'resource' => isset($relationData['resource']) ? $relationData['resource'] : '#',
             ];
         }
     }

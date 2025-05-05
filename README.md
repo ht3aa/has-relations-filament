@@ -31,7 +31,10 @@ public static function table(Table $table): Table
         ->actions([
             HasRelations::make()
                 ->relations([
-                    'relation_name' => ['column1', 'column2'],
+                    'posts' => [
+                        'resource' => PostResource::class,
+                        'columns' => ['title', 'slug', 'published_at'],
+                    ],
                 ]),
         ]);
 }
@@ -53,11 +56,11 @@ public static function getEloquentQuery(): Builder
 
 ## Features
 
--   Displays related records in a modal
--   Supports multiple relations
--   Customizable columns for each relation
--   Localized messages (English and Arabic supported)
--   Responsive table layout
+- Displays related records in a modal
+- Supports multiple relations
+- Customizable columns for each relation
+- Localized messages (English and Arabic supported)
+- Responsive table layout
 
 ## Translation
 
@@ -69,8 +72,8 @@ php artisan vendor:publish --provider="Ht3aa\HasRelations\HasRelationsServicePro
 
 This will copy the translation files to:
 
--   `lang/vendor/has-relations/en/translations.php`
--   `lang/vendor/has-relations/ar/translations.php`
+- `lang/vendor/has-relations/en/translations.php`
+- `lang/vendor/has-relations/ar/translations.php`
 
 You can then modify these files to customize the translations for your application.
 

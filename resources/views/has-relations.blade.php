@@ -12,15 +12,30 @@
                             </x-filament-tables::header-cell>
                         @endforeach
                     @foreach ($template['tableRecords'] as $record)
-                        <x-filament-tables::row >
-                            @foreach ($template['columns'] as $column)
-                                <x-filament-tables::cell>
-                                    <p style="padding: 12px 16px;">
-                                        {{ $record[$column] }}
-                                    </p>
-                                </x-filament-tables::cell>
-                            @endforeach
-                        </x-filament-tables::row>
+                        @can('update', $record)
+                            <x-filament-tables::row>
+                                @foreach ($template['columns'] as $column)
+                                    <x-filament-tables::cell>
+                                            <a href="{{ $template['resource']::getUrl('edit', ['record' => $record]) }}">
+                                                <p style="padding: 12px 16px;">
+                                                    {{ $record->{$column} }}
+                                                </p>
+                                            </a>
+                                    </x-filament-tables::cell>
+                                @endforeach
+                            </x-filament-tables::row>
+                        @endcan
+                        @cannot('update', $record)
+                            <x-filament-tables::row>
+                                @foreach ($template['columns'] as $column)
+                                    <x-filament-tables::cell>
+                                            <p style="padding: 12px 16px;" >
+                                                {{ $record->{$column} }}
+                                            </p>
+                                    </x-filament-tables::cell>
+                                @endforeach
+                            </x-filament-tables::row>
+                        @endcannot
                     @endforeach
 
                     </x-filament-tables::table>
