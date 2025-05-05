@@ -16,11 +16,17 @@
                             <x-filament-tables::row>
                                 @foreach ($template['columns'] as $column)
                                     <x-filament-tables::cell>
-                                            <a href="{{ $template['resource']::getUrl('edit', ['record' => $record]) }}">
+                                            @if ($template['resource'] !== '#')
+                                                <a href="{{ $template['resource']::getUrl('edit', ['record' => $record]) }}">
+                                                    <p style="padding: 12px 16px;">
+                                                        {{ $record->{$column} }}
+                                                </p>
+                                            </a>
+                                            @else
                                                 <p style="padding: 12px 16px;">
                                                     {{ $record->{$column} }}
                                                 </p>
-                                            </a>
+                                            @endif
                                     </x-filament-tables::cell>
                                 @endforeach
                             </x-filament-tables::row>
