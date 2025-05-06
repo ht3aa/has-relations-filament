@@ -43,7 +43,7 @@
 
                                                 }">
                                                 <span x-show="!isDeleting">
-                                                    {{ __('has-relations::translations.has-relations.delete') }}
+                                                    {{ __('has-relations::translations.has-relations.actions.delete') }}
                                                 </span>
                                                 <span x-show="isDeleting">
                                                     <x-filament::loading-indicator class="w-4 h-4" />
