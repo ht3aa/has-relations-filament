@@ -22,10 +22,10 @@ class HasRelations extends Action
             ->label(__('has-relations::translations.has-relations.has-relations'))
             ->modalDescription(new HtmlString(''))
             ->modalContentFooter(function () {
-                $this->generateTemplates();
 
                 return new HtmlString(view('has-relations::has-relations', [
-                    'templates' => $this->templates,
+                    'relations' => $this->relations,
+                    'record' => $this->getRecord(),
                 ]));
             });
     }
@@ -40,24 +40,5 @@ class HasRelations extends Action
         $this->relations = $relations;
 
         return $this;
-    }
-
-    public function generateTemplates()
-    {
-        foreach ($this->relations as $relation => $relationData) {
-            $count = $this->getRecord()->{$relation}->count();
-
-            $this->templates[] = [
-                'count' => $count,
-                'relation' => $relation,
-                'label' => __('has-relations::translations.has-relations.there-are-x-records-in-x-relation', [
-                    'count' => $count,
-                    'relation' => __('has-relations::translations.has-relations.' . str($relation)->singular() . '.label'),
-                ]),
-                'columns' => isset($relationData['columns']) ? $relationData['columns'] : [],
-                'tableRecords' => $this->getRecord()->{$relation},
-                'resource' => isset($relationData['resource']) ? $relationData['resource'] : '#',
-            ];
-        }
     }
 }
